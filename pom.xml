@@ -18,6 +18,8 @@
         <module>springcloud-eureka</module>
         <module>springcloud-eureka-client</module>
         <module>springcloud-config</module>
+        <module>springcloud-ribbon</module>
+        <module>springcloud-feign</module>
     </modules>
 
     <properties>
