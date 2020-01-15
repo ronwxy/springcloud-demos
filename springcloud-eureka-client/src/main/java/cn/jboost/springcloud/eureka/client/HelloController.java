@@ -10,4 +10,10 @@ public class HelloController {
     public String hello(){
         return "Hello, welcome to spring cloud.";
     }
+
+
+    @RequestMapping("hello/param")
+    public String hello(QueryParam param) {
+        return "Hello " + param.getName() + "，你的年龄是 " + param.getAge();
+    }
 }
