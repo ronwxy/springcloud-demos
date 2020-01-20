@@ -1,4 +1,4 @@
-package cn.jboost.springcloud.feign;
+package cn.jboost.springcloud.hystrix;
 
 public class QueryParam {
 

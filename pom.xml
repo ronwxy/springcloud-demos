@@ -20,6 +20,7 @@
         <module>springcloud-config</module>
         <module>springcloud-ribbon</module>
         <module>springcloud-feign</module>
+        <module>springcloud-hystrix</module>
     </modules>
 
     <properties>

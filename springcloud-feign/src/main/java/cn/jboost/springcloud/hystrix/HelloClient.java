@@ -1,4 +1,4 @@
-package cn.jboost.springcloud.feign;
+package cn.jboost.springcloud.hystrix;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
