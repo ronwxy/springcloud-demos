@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: hello-service
+
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config-server
+      failfast: true # 在启动时如果连不上config server，则启动失败
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active:default}
+      overrideNone: true

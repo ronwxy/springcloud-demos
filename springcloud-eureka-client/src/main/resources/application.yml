@@ -1,9 +1,5 @@
 server:
-  port: 8080
-
-spring:
-  application:
-    name: hello-service
+  port: 8081
 
 eureka:
   client:
@@ -12,3 +8,14 @@ eureka:
 #  instance:
 #    prefer-ip-address: true
 #    instance-id: ${spring.application.name}:${random.uuid}
+
+spring:
+  profiles:
+    active: dev
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

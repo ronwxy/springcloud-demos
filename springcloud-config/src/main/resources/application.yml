@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ronwxy/jboost-config
+          searchPaths: '{application}'  # 按应用名称分文件夹目录存储配置文件，只在应用名所在目录及顶层目录下寻找配置文件
+          cloneOnStart: true # 启动时就获取配置，否则只有当应用请求时才去获取配置
+          basedir: D:\config #本地缓存路径
+          forcePull: true  # 在本地配置被污染（篡改）时， 强制拉取远程配置覆盖
+      profile: ${spring.profiles.active:default}
+      discovery:
+        enabled: false
+      overrides: # 覆盖所有的同名配置，客户端可通过spring.cloud.config.overrideNone=true 来让自己同名的环境变量或系统属性来生效
+        app: app-override
+
+server:
+  port: 8888
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

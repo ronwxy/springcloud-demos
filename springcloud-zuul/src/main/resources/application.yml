@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: zuul-server
+
+server:
+  port: 8765
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  ignoredPatterns: /**/admin/**
+  ignored-services: "config-server"
+  routes:
+    hello:
+      path: /hi/**
+      serviceId: hello-service
+    hello-service: /hi2/**
+    jboost:
+      path: /jboost/**
+      url: http://blog.jboost.cn
+
+  #the default value is [Cookie,Set-Cookie,Authorization],this means these headers are not downstream to services;
+  #downstream Authorization header and Cookie header
+  sensitive-headers:
+  thread-pool:
+    use-separate-thread-pools: true
+    thread-pool-key-prefix: zuulgw
+  ribbon-isolation-strategy: thread
+  retryable: false
+  #prefix: /api
+
+#hystrix
+hystrix:
+  commonad:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeout-in-milliseconds: 20000
+  shareSecurityContext: true
+
+#ribbon enable okhttp
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 15000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+  #ribbon enable okhttp
+  okhttp:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
