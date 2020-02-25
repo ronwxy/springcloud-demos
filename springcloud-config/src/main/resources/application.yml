@@ -17,10 +17,23 @@ spring:
       overrides: # 覆盖所有的同名配置，客户端可通过spring.cloud.config.overrideNone=true 来让自己同名的环境变量或系统属性来生效
         app: app-override
 
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: rabbitmq
+#    password: passw0rd
+
 server:
   port: 8888
+
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
